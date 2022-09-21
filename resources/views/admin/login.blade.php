@@ -31,16 +31,22 @@
         <div class="animate form login_form">
           <section class="login_content">
 
-            @if (@errors ->any())
-            <div class=''></div>
-            <form action="{{route('admin.makeLogin')}}" method="POST">
-                @csrf
+            @if ($errors->any())
+            <div class='alert alert-danger'>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </div>
+            @endif
+
+            <form action="{{route('admin.makeLogin')}}" method="post">
               <h1>Login Form</h1>
+              @csrf
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" name="email" class="form-control" placeholder="E-mail" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" name="password" class="form-control" placeholder="Password" required="" />
               </div>
               <div>
                 <input type="submit" class="submit">

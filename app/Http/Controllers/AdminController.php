@@ -18,14 +18,14 @@ class AdminController extends Controller
 
     public function makeLogin(Request $request){
         $data = array(
-            'email' => $request -> email,
-            'password' => $request -> password
+            'email' => $request->email,
+            'password' => $request->password
         );
 
         if(Auth::attempt($data)){
             echo "Login Successful";
         }else{
-            return back() -> withErrors(['message'=>'Invalied email or password']);
+            return back()->withErrors(['message'=>'Invalied email or password']);
         }
     }
 
