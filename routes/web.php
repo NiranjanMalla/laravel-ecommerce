@@ -34,3 +34,5 @@ Route::get('/productView',[BaseController::class,'productView'])->name('productV
 
 
 Route::get('/admin/login',[AdminController::class,'login'])->name('admin.login');
+
+Route::post('/admin/login',[AdminController::class,'makeLogin'])->name('admin.makeLogin');

@@ -30,7 +30,11 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+
+            @if (@errors ->any())
+            <div class=''></div>
+            <form action="{{route('admin.makeLogin')}}" method="POST">
+                @csrf
               <h1>Login Form</h1>
               <div>
                 <input type="text" class="form-control" placeholder="Username" required="" />
@@ -39,8 +43,8 @@
                 <input type="password" class="form-control" placeholder="Password" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Log in</a>
-                </div>
+                <input type="submit" class="submit">
+              </div>
 
               <div class="clearfix"></div>
 
