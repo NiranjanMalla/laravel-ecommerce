@@ -19,14 +19,24 @@ class AdminController extends Controller
     public function makeLogin(Request $request){
         $data = array(
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $request->password,
+            'role' => 'admin'
         );
 
         if(Auth::attempt($data)){
-            echo "Login Successful";
+            return redirect()->route('admin.dashboard');
         }else{
             return back()->withErrors(['message'=>'Invalied email or password']);
         }
+    }
+
+    public function dashboard(){
+        return view('admin.dashboard');
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('admin.login');
     }
 
 }
